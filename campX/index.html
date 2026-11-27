@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampX</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+<div id="splash" tabindex="-1" role="dialog" aria-modal="true" aria-label="CampX"><span class="cx-logo" role="img" aria-label="CampX and the B.M.S. College of Engineering emblem"><span class="cx-word">Camp<span class="cx-cap">X</span></span><span class="cx-sep">×</span><span class="cx-x"></span></span></div>
+<header><div class="wrap bar">
+  <button class="logo" data-act="view" data-v="home" aria-label="CampX home"><span class="cx-logo" aria-hidden="true"><span class="cx-word">Camp<span class="cx-cap">X</span></span><span class="cx-sep">×</span><span class="cx-x"></span></span></button>
+  <nav aria-label="Main">
+    <button class="nb" data-act="view" data-v="home">Browse</button>
+    <button class="nb" data-act="view" data-v="reqs">My requests</button>
+    <button class="nb" data-act="view" data-v="faq">FAQ</button>
+    <button class="nb" data-act="view" data-v="about">About Us</button>
+    <button class="nb acct" id="acct" data-act="acct">Log in</button>
+  </nav>
+  <button class="btn add" data-act="list">+<span> List an item</span></button>
+</div></header>
+<main class="wrap">
+  <section id="home">
+    <div class="hero">
+      <h1>Need it this week? Borrow it from campus.</h1>
+      <p>Laptops, cameras, textbooks, lab coats. Borrow, rent, buy or sell with other students, and hand it over between classes.</p>
+      <div class="search" role="search">
+        <input id="q" type="search" placeholder="Search laptop, calculator, blazer…" aria-label="Search items">
+        <button class="btn" data-act="go">Search</button>
+      </div>
+    </div>
+
+    <div class="tools" id="browse">
+      <div class="seg" id="seg">
+        <button data-act="type" data-t="all">All</button>
+        <button data-act="type" data-t="free">Free to borrow</button>
+        <button data-act="type" data-t="rent">For rent</button>
+        <button data-act="type" data-t="sale">For sale</button>
+      </div>
+      <select id="cat" aria-label="Category"></select>
+      <select id="sort" aria-label="Sort">
+        <option value="new">Newest</option>
+        <option value="low">Price: low to high</option>
+        <option value="high">Price: high to low</option>
+      </select>
+    </div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <div class="more"><button class="btn ghost" id="more" data-act="more" hidden>Load more</button></div>
+
+    <div class="how">
+      <h2>How CampX works</h2>
+      <ol class="steps">
+        <li><b>Find it</b><span>Search by item, type and category. Free, rent and sale listings sit side by side.</span></li>
+        <li><b>Send a request</b><span>Pick your dates, see the fee and refundable deposit, and ask the owner.</span></li>
+        <li><b>Meet on campus</b><span>Agree a pickup spot. Both of you confirm the handover in the app.</span></li>
+        <li><b>Return it</b><span>Give it back by the due date and confirm. Deposits are settled between you.</span></li>
+      </ol>
+    </div>
+    <div class="sdg">
+      <h3>Fewer purchases, more reuse</h3>
+      <p>Every item that is borrowed, rented or bought second-hand is one fewer new purchase. CampX counts completed exchanges so the impact is measured from real activity, not guessed.</p>
+    </div>
+  </section>
+
+  <section id="reqs" class="pg" hidden>
+    <h2>My requests</h2>
+    <div class="stats" id="stats"></div>
+    <p class="note">Counted from completed exchanges on your account. Environmental savings would be estimates, so they are not shown.</p>
+    <div class="seg" id="rseg">
+      <button data-act="role" data-r="requester">I requested</button>
+      <button data-act="role" data-r="owner">Incoming</button>
+    </div>
+    <div id="rlist"></div>
+  </section>
+
+  <section id="faq" class="pg" hidden>
+    <h2>Frequently asked questions</h2>
+    <p class="note">How CampX works, who can join, and what happens during an exchange.</p>
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary>What is CampX?</summary>
+        <p>CampX is a campus-sharing app for B.M.S. College of Engineering students. Instead of buying something you need for a week, you can borrow it, rent it, buy it second-hand or sell what you no longer use to another student on campus.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who can use CampX?</summary>
+        <p>Only BMSCE students with an official <b>@bmsce.ac.in</b> email address can register and log in. Personal addresses from Gmail, Outlook, Yahoo or any other domain are not accepted, so every listing and request comes from a verified member of the college community.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I create an account?</summary>
+        <p>Open <b>Log in</b>, choose <b>Create account</b>, and enter your full name, @bmsce.ac.in email, student ID, college and a password of at least 8 characters. Your account is ready immediately — there is no confirmation email, OTP or verification link to wait for.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why is my email address rejected?</summary>
+        <p>CampX only accepts addresses that end exactly in <b>@bmsce.ac.in</b>. Look-alike domains such as <i>notbmsce.ac.in</i> or <i>bmsce.ac.in.example.com</i> are refused. If you see the access-restricted message, sign in with your official college address.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I log in?</summary>
+        <p>Click <b>Log in</b>, enter your @bmsce.ac.in email and password, then press <b>Log in</b> or hit Enter. Email matching ignores capitals, so <i>Student@BMSCE.ac.in</i> and <i>student@bmsce.ac.in</i> are the same account. Your session lasts about a week; after that, log in again.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I list an item?</summary>
+        <p>Click <b>List an item</b>, add a name and description, pick a category and condition, choose free, rent or sale, set a price and optional refundable deposit, add a pickup spot and up to four photos (JPG, PNG or WebP under 3 MB each), then press <b>Publish listing</b>. You can remove your own listing from its detail view.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do requests and dates work?</summary>
+        <p>Open a listing, choose your pickup and return dates, add an optional message and send the request. The owner accepts or declines it. Rental fees are calculated per day, and dates already booked by an accepted request cannot be double-booked.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does the handover and return work?</summary>
+        <p>Meet on campus and both of you press <b>Confirm handover</b> so the exchange is recorded. When the item goes back, both sides press <b>Confirm return</b> and the request is marked completed. Overdue rentals are flagged in <b>My requests</b>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What about payments and deposits?</summary>
+        <p>CampX does not process payments. Prices, rental fees and deposits are shown in the app, but money is settled directly between students when you meet. A rental deposit is returned by the owner once the item comes back in the same condition.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if something goes wrong?</summary>
+        <p>During an active exchange the owner can report damage, and either side can open a dispute with a short written reason. The request is then marked <b>In dispute</b> for review, and both students keep the full history in <b>My requests</b>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is the impact on My requests counted?</summary>
+        <p>The numbers come only from exchanges that both sides marked completed. CampX does not estimate environmental savings — only real, finished activity on your account is counted.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does CampX cost anything?</summary>
+        <p>Browsing, listing and requesting are free. A listing owner may charge a rental fee or a sale price, and may ask for a refundable deposit on rentals, which is agreed between the two students.</p>
+      </details>
+    </div>
+  </section>
+  <section id="about" class="pg" hidden>
+    <h2>About us</h2>
+    <p class="note">The students behind CampX, what the platform does, and why it exists.</p>
+
+    <p class="about-intro">CampX is a campus-sharing platform built by four students at B.M.S. College of Engineering, Bengaluru. It gives the college community one place to borrow, rent, buy and sell what a semester actually needs — and to pass on what is no longer used.</p>
+
+    <h3 class="about-h">Meet the team</h3>
+    <ul class="team">
+      <li class="tm">
+        <span class="tm-av" aria-hidden="true">SA</span>
+        <b>Shravya Acharya</b>
+        <a href="mailto:shravyaacharya.cs25@bmsce.ac.in">shravyaacharya.cs25@bmsce.ac.in</a>
+      </li>
+      <li class="tm">
+        <span class="tm-av" aria-hidden="true">AT</span>
+        <b>Aditya Tiwari</b>
+        <a href="mailto:adityatiwari.cs25@bmsce.ac.in">adityatiwari.cs25@bmsce.ac.in</a>
+      </li>
+      <li class="tm">
+        <span class="tm-av" aria-hidden="true">AB</span>
+        <b>Aditi Bhandary K</b>
+        <a href="mailto:adithibhandary.cs25@bmsce.ac.in">adithibhandary.cs25@bmsce.ac.in</a>
+      </li>
+      <li class="tm">
+        <span class="tm-av" aria-hidden="true">AB</span>
+        <b>Akanksh Bhat A</b>
+        <a href="mailto:akankshbhat.cs25@bmsce.ac.in">akankshbhat.cs25@bmsce.ac.in</a>
+      </li>
+    </ul>
+
+    <h3 class="about-h">About the platform</h3>
+    <div class="about-grid">
+      <div class="ab">
+        <h3>What CampX is</h3>
+        <p>A sharing marketplace for BMSCE students. Every listing is a piece of campus equipment, a textbook, a lab coat or something similar that can change hands between students instead of being bought new.</p>
+      </div>
+      <div class="ab">
+        <h3>What it solves</h3>
+        <p>Most items a student needs are used for a few days or one semester. Buying them new is expensive and leaves them unused afterwards. CampX connects the student who needs an item with the student who already owns one, with dates and a pickup spot agreed before the handover.</p>
+      </div>
+      <div class="ab">
+        <h3>Key features</h3>
+        <ul>
+          <li><b>Browse and search</b> by item name, by free, rent or sale, and by category, sorted by newest or price.</li>
+          <li><b>List an item</b> with a description, condition, category, price or per-day fee, an optional refundable deposit, a pickup spot and up to four photos.</li>
+          <li><b>Send a request</b> with pickup and return dates; the fee is calculated from the days you need, and already booked dates cannot be double-booked.</li>
+          <li><b>Confirm handover and return</b> from both sides, so every exchange has a record, with damage reports and disputes if something goes wrong.</li>
+          <li><b>Track your impact</b> in My requests, counted only from exchanges both students marked completed.</li>
+          <li><b>BMSCE-only access</b> with an official @bmsce.ac.in address, so every listing and request comes from a member of the college.</li>
+        </ul>
+      </div>
+      <div class="ab">
+        <h3>Who it is for</h3>
+        <p>Students who need something briefly, students with spare things at home, and anyone who would rather buy a used textbook than a new one. There are no fees for browsing, listing or requesting — money for a rental, a sale or a deposit is settled directly between the two students when they meet on campus.</p>
+      </div>
+    </div>
+
+    <h3 class="about-h">Mission, purpose and place</h3>
+    <div class="about-grid">
+      <div class="ab">
+        <h3>Our mission</h3>
+        <p>Make sharing the default on campus: give every student a simple, trustworthy way to find what they need and pass on what they do not, so fewer things are bought once and forgotten.</p>
+      </div>
+      <div class="ab">
+        <h3>Why this platform?</h3>
+        <p>Campus message groups and notice boards lose track of who has what, who booked which dates and whether an item came back. CampX keeps listings, dates, requests and confirmations in one place, restricted to verified college addresses, which is the part an informal group chat cannot do.</p>
+      </div>
+      <div class="ab">
+        <h3>Our institution</h3>
+        <p>CampX is a student project from <b>B.M.S. College of Engineering (BMSCE)</b>, Bengaluru, Karnataka, India. The platform is designed around campus life there, and access is limited to the college's own email domain.</p>
+      </div>
+      <div class="ab">
+        <h3>Contact</h3>
+        <p>Questions, feedback or a problem with an exchange? Write to any of us:</p>
+        <ul class="mails">
+          <li><a href="mailto:shravyaacharya.cs25@bmsce.ac.in">shravyaacharya.cs25@bmsce.ac.in</a></li>
+          <li><a href="mailto:adityatiwari.cs25@bmsce.ac.in">adityatiwari.cs25@bmsce.ac.in</a></li>
+          <li><a href="mailto:adithibhandary.cs25@bmsce.ac.in">adithibhandary.cs25@bmsce.ac.in</a></li>
+          <li><a href="mailto:akankshbhat.cs25@bmsce.ac.in">akankshbhat.cs25@bmsce.ac.in</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ab ack">
+      <h3>Acknowledgement</h3>
+      <p>Thank you to everyone who used CampX, reported a problem, tested a listing or suggested an improvement while it was being built. The platform is better because of that feedback, and it stays a project of the students who use it.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">CampX is a student project. Payments are settled offline between students.</div></footer>
+
+<dialog id="dlg" aria-label="Details"></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+</body>
+</html>
